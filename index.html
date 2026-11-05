@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   SIPRO - Sidoarjo Bakery
+  </title>
+  <style>
+   :root {
+    --bg:#fffaf3;
+    --ink:#30251f;
+    --muted:#796b62;
+    --brown:#75452e;
+    --orange:#d97736;
+    --line:#eadfd3;
+    --green:#23845b
+}
+* {
+    box-sizing:border-box
+}
+body {
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font:15px/1.55 system-ui,Segoe UI,sans-serif
+}
+header {
+    background:linear-gradient(120deg,#563421,#965d39,#c27b42);
+    color:white;
+    padding:34px 20px 52px
+}
+.hero,main {
+    max-width:1150px;
+    margin:auto
+}
+.hero {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px
+}
+.tag {
+    font-size:11px;
+    letter-spacing:.14em;
+    font-weight:800;
+    color:#f8dcae
+}
+.hero h1 {
+    font-size:clamp(27px,4vw,40px);
+    line-height:1.13;
+    margin:9px 0
+}
+.hero p {
+    max-width:760px;
+    color:#f8eee4
+}
+.bread {
+    font-size:50px;
+    background:#ffffff20;
+    padding:14px;
+    border-radius:20px
+}
+main {
+    padding:0 18px;
+    margin-top:-22px;
+    position:relative
+}
+.layout {
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+    align-items:start
+}
+.layout>section:first-child {
+    width:100%
+}
+.layout>section.results {
+    display:contents
+}
+.card {
+    background:white;
+    border:1px solid var(--line);
+    border-radius:17px;
+    padding:22px;
+    box-shadow:0 12px 30px #57351b12;
+    margin-bottom:18px
+}
+h2 {
+    font-size:19px;
+    margin:0 0 5px
+}
+.muted,.note {
+    color:var(--muted);
+    font-size:13px
+}
+.muted {
+    margin:0 0 17px
+}
+.section {
+    margin:20px 0 10px;
+    color:var(--brown);
+    font-size:12px;
+    font-weight:850;
+    letter-spacing:.08em;
+    text-transform:uppercase
+}
+label {
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:5px
+}
+.field {
+    margin-bottom:12px
+}
+input,select {
+    width:100%;
+    padding:10px 11px;
+    border:1px solid #dfd2c5;
+    border-radius:9px;
+    background:#fffdfa;
+    font:inherit;
+    color:var(--ink)
+}
+input:focus,select:focus {
+    outline:2px solid #d9773630;
+    border-color:var(--orange)
+}
+.product {
+    background:#fffaf4;
+    border:1px solid #f0e4d8;
+    border-radius:12px;
+    padding:12px;
+    margin-bottom:10px
+}
+.constraint {
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:12px;
+    margin:10px 0
+}
+.c-head {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px
+}
+.c-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr .8fr 1fr;
+    gap:7px
+}
+.c-grid label {
+    font-size:10px;
+    color:var(--muted)
+}
+.c-grid input,.c-grid select {
+    padding:8px 6px;
+    font-size:13px
+}
+button {
+    border:0;
+    border-radius:10px;
+    padding:10px 14px;
+    font:inherit;
+    font-weight:800;
+    cursor:pointer
+}
+.soft {
+    background:#f8eee4;
+    color:var(--brown);
+    font-size:12px
+}
+.remove {
+    background:#fff0ed;
+    color:#b42318;
+    font-size:12px
+}
+.primary {
+    width:100%;
+    margin-top:12px;
+    padding:14px;
+    background:linear-gradient(110deg,#a9542d,#d97736);
+    color:white;
+    font-size:15px
+}
+.error {
+    display:none;
+    margin-top:12px;
+    background:#fff0ef;
+    color:#b42318;
+    padding:11px;
+    border-radius:9px
+}
+.metric {
+    background:linear-gradient(130deg,#fff3e4,#fffaf5);
+    border:1px solid #f1d9bc;
+    border-radius:13px;
+    padding:17px
+}
+.metric span {
+    font-size:13px;
+    color:var(--brown);
+    font-weight:750
+}
+.metric strong {
+    display:block;
+    font-size:clamp(27px,4vw,38px);
+    color:#8a4b29
+}
+.stats {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:10px
+}
+.stat {
+    border:1px solid var(--line);
+    border-radius:11px;
+    padding:12px
+}
+.stat span {
+    display:block;
+    color:var(--muted);
+    font-size:12px
+}
+.stat b {
+    font-size:18px
+}
+.conclusion {
+    background:#eef8f1;
+    border:1px solid #cde8d6;
+    border-radius:11px;
+    padding:13px;
+    margin-top:12px;
+    font-weight:750;
+    color:#185c3c
+}
+.tablewrap {
+    overflow:auto;
+    margin-top:15px
+}
+table {
+    width:100%;
+    border-collapse:collapse;
+    min-width:400px;
+    font-size:13px
+}
+th,td {
+    padding:9px 8px;
+    text-align:right;
+    border-bottom:1px solid var(--line);
+    white-space:nowrap
+}
+th {
+    background:#faf5ee;
+    color:#69574a
+}
+th:first-child,td:first-child {
+    text-align:left
+}
+.best {
+    background:#eef8f1;
+    font-weight:800
+}
+.steps {
+    padding-left:20px
+}
+.steps li {
+    padding:5px 0
+}
+.steps code {
+    background:#f6f0e9;
+    padding:2px 4px;
+    border-radius:4px
+}
+.placeholder {
+    min-height:130px;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    color:var(--muted)
+}
+canvas {
+    width:100%;
+    height:310px;
+    display:block
+}
+.legend {
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    color:var(--muted);
+    font-size:12px
+}
+.dot {
+    display:inline-block;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    margin-right:5px
+}
+footer {
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
+    padding:5px 15px 28px
+}
+@media(max-width:850px) {
+    .layout {
+        grid-template-columns:1fr
+    }
+}
+@media(max-width:520px) {
+    .hero {
+        align-items:flex-start
+    }
+    .bread {
+        font-size:30px
+    }
+    .card {
+        padding:16px
+    }
+    .c-grid {
+        grid-template-columns:1fr 1fr
+    }
+    .c-grid .cap {
+        grid-column:span 2
+    }
+}
+  </style>
+ </head>
+ <body>
+  <header>
+   <div class="hero">
+    <div>
+     <h1>
+      Sistem Informasi Optimasi Produksi (SIPRO)
+      <br/>
+      Sidoarjo Bakery
+     </h1>
+     <p>
+      Masukkan data produk, keuntungan atau biaya per unit, dan keterbatasan bahan baku/kapasitas. Pilih Maksimum untuk mencari keuntungan tertinggi atau Minimum untuk mencari biaya terendah. Sistem akan mengevaluasi titik pojok daerah layak.
+     </p>
+    </div>
+    <div class="bread">
+     🥐
+    </div>
+   </div>
+  </header>
+  <main>
+   <div class="layout">
+    <section class="card">
+     <h2>
+      Input Data Produksi
+     </h2>
+     <p class="muted">
+      Lengkapi formulir berikut untuk membangun model Program Linier.
+     </p>
+     <div class="section">
+      1. Produk dan fungsi tujuan
+     </div>
+     <div class="product">
+      <div class="field">
+       <label>
+        Nama Produk 1 (x)
+       </label>
+       <input id="n1" value="Roti Tawar"/>
+      </div>
+      <label>
+       Untung atau biaya per 1 roti (Rp)
+      </label>
+      <input id="z1" min="0" type="number" value="5000"/>
+     </div>
+     <div class="product">
+      <div class="field">
+       <label>
+        Nama Produk 2 (y)
+       </label>
+       <input id="n2" value="Roti Manis"/>
+      </div>
+      <label>
+       Untung atau biaya per 1 roti (Rp)
+      </label>
+      <input id="z2" min="0" type="number" value="4000"/>
+     </div>
+     <div class="field">
+      <label>
+       Jenis optimasi
+      </label>
+      <select id="mode">
+       <option value="max">
+        Maksimum (Keuntungan)
+       </option>
+       <option value="min">
+        Minimum (Biaya)
+       </option>
+      </select>
+     </div>
+     <div class="section">
+      2. Batasan bahan dan kapasitas
+     </div>
+     <p class="muted">
+      Masukkan kebutuhan bahan atau waktu untuk setiap jenis roti dan jumlah persediaan yang tersedia.
+     </p>
+     <div id="constraints">
+     </div>
+     <button class="soft" id="add" type="button">
+      ＋ Tambah kendala
+     </button>
+     <button class="soft" id="reset" type="button">
+      Pulihkan contoh
+     </button>
+     <button class="primary" id="run" type="button">
+      Hitung Optimasi
+     </button>
+     <div class="error" id="error" role="alert">
+     </div>
+     <p class="note">
+      Koefisien dan RHS harus nonnegatif. Model grafik bersifat kontinu sehingga hasil dapat berupa pecahan unit.
+     </p>
+    </section>
+    <section class="results">
+     <div class="card" id="chart">
+      <h2>
+       2. Grafik Daerah Layak
+      </h2>
+      <p class="muted">
+       Garis kendala dan titik pojok daerah penyelesaian.
+      </p>
+      <div class="placeholder">
+       Grafik akan muncul setelah perhitungan.
+      </div>
+     </div>
+     <div class="card" id="result">
+      <h2>
+       3. Hasil &amp; Rekomendasi
+      </h2>
+      <p class="muted">
+       Solusi optimum akan ditampilkan setelah perhitungan.
+      </p>
+      <div class="placeholder">
+       📊
+       <br/>
+       Masukkan data lalu klik Hitung Optimasi.
+      </div>
+     </div>
+    </section>
+   </div>
+  </main>
+  <footer>
+   SIPRO • Sidoarjo Bakery • Program Linier Metode Grafik Dua Variabel
+  </footer>
+  <script>
+   const $=id=>document.getElementById(id),E=1e-8,colors=["#b45e32","#d9a441","#398b72"];
+let count=0;
+const defaults=[ {
+    name:"Tepung terigu (kg)",a:2,b:1,op:"<=",rhs:100
+}
+, {
+    name:"Mentega (kg)",a:1,b:2,op:"<=",rhs:80
+}
+, {
+    name:"Waktu oven (jam)",a:2,b:1,op:"<=",rhs:90
+}
+];
+const esc = s =>
+    String(s).replace(/[&<>"']/g, c => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    }[c]));
+
+function add(d = {
+    name: "Kendala baru",
+    a: 1,
+    b: 1,
+    op: "<=",
+    rhs: 10
+}) {
+    if (count >= 3) return;
+
+    d.op = $("mode").value === "max" ? "<=" : ">=";
+    count++;
+
+    let q = document.createElement("div");
+    q.className = "constraint";
+
+    q.innerHTML = `
+        <div class="c-head">
+            <b>Kendala ${count}</b>
+            <button class="remove" type="button">Hapus</button>
+        </div>
+
+        <div class="field">
+            <label>Nama sumber daya</label>
+            <input class="cn" value="${esc(d.name)}">
+        </div>
+
+        <div class="c-grid">
+            <div>
+                <label>Kebutuhan x</label>
+                <input class="a" type="number" min="0" step="any" value="${d.a}">
+            </div>
+
+            <div>
+                <label>Kebutuhan y</label>
+                <input class="b" type="number" min="0" step="any" value="${d.b}">
+            </div>
+
+            <div>
+                <label>Batasan otomatis</label>
+                <div class="op-display"
+                    style="padding:9px 7px;border:1px solid #dfd2c5;border-radius:9px;background:#f7f2ec;font-weight:800;text-align:center">
+                    ≤
+                </div>
+            </div>
+
+            <div class="cap">
+                <label>Kapasitas RHS</label>
+                <input class="rhs" type="number" min="0" step="any" value="${d.rhs}">
+            </div>
+        </div>
+    `;
+
+    q.querySelector(".remove").onclick = () => {
+        q.remove();
+        renumber();
+    };
+
+    $("constraints").append(q);
+    $("add").disabled = count >= 3;
+}
+
+function renumber() {
+    count = $("constraints").children.length;
+
+    [...$("constraints").children].forEach((n, i) => {
+        n.querySelector("b").textContent = `Kendala ${i + 1}`;
+    });
+
+    $("add").disabled = count >= 3;
+}
+
+function reset() {
+    $("constraints").innerHTML = "";
+    count = 0;
+
+    defaults.forEach(add);
+
+    $("n1").value = "Roti Tawar";
+    $("n2").value = "Roti Manis";
+    $("z1").value = 5000;
+    $("z2").value = 4000;
+    $("mode").value = "max";
+    $("error").style.display = "none";
+
+    $("result").innerHTML = `
+        <h2>Hasil Optimasi</h2>
+        <p class="muted">Ringkasan solusi terbaik akan tampil di sini.</p>
+        <div class="placeholder">
+            📊<br>
+            Masukkan data lalu klik Hitung Optimasi.
+        </div>
+    `;
+
+    $("chart").innerHTML = `
+        <h2>Grafik Daerah Layak</h2>
+        <p class="muted">Garis kendala dan titik pojok.</p>
+        <div class="placeholder">
+            Grafik akan muncul setelah perhitungan.
+        </div>
+    `;
+}
+
+$("add").onclick = () => add();
+$("reset").onclick = reset;
+
+$("mode").addEventListener("change", () => {
+    document.querySelectorAll(".op-display").forEach(node => {
+        node.textContent = $("mode").value === "max" ? "≤" : "≥";
+    });
+});
+
+function read() {
+    let z1 = $("z1").value;
+    let z2 = $("z2").value;
+
+    if (!$("n1").value.trim() || !$("n2").value.trim()) {
+        throw Error("Nama kedua produk wajib diisi.");
+    }
+
+    if (
+        z1 === "" ||
+        z2 === "" ||
+        ![+z1, +z2].every(Number.isFinite) ||
+        +z1 < 0 ||
+        +z2 < 0
+    ) {
+        throw Error("Koefisien fungsi tujuan harus berupa angka nonnegatif.");
+    }
+
+    let cs = [...$("constraints").children].map((q, i) => {
+        let a = q.querySelector(".a").value;
+        let b = q.querySelector(".b").value;
+        let r = q.querySelector(".rhs").value;
+
+        if (
+            [a, b, r].some(v => v === "") ||
+            ![+a, +b, +r].every(Number.isFinite) ||
+            [+a, +b, +r].some(v => v < 0)
+        ) {
+            throw Error(`Periksa angka pada kendala ${i + 1}.`);
+        }
+
+        if (+a === 0 && +b === 0) {
+            throw Error(`Koefisien kendala ${i + 1} tidak boleh sama-sama nol.`);
+        }
+
+        return {
+            name: q.querySelector(".cn").value.trim() || `Kendala ${i + 1}`,
+            a: +a,
+            b: +b,
+            op: $("mode").value === "max" ? "<=" : ">=",
+            rhs: +r
+        };
+    });
+
+    if (cs.length < 2 || cs.length > 3) {
+        throw Error("Masukkan minimal 2 dan maksimal 3 kendala.");
+    }
+
+    return {
+        n1: $("n1").value.trim(),
+        n2: $("n2").value.trim(),
+        z1: +z1,
+        z2: +z2,
+        mode: $("mode").value,
+        cs
+    };
+}
+
+function ok(x, y, cs) {
+    return (
+        x >= -E &&
+        y >= -E &&
+        cs.every(c =>
+            c.op === "<="
+                ? c.a * x + c.b * y <= c.rhs + E
+                : c.a * x + c.b * y >= c.rhs - E
+        )
+    );
+}
+
+function f(n) {
+    return (Math.abs(n) < 1e-7 ? 0 : n).toLocaleString("id-ID", {
+        maximumFractionDigits: 4
+    });
+}
+
+function rp(n) {
+    return "Rp" + Math.round(n).toLocaleString("id-ID");
+}
+
+function solve(d) {
+    let ls = [
+        ...d.cs.map(c => ({
+            a: c.a,
+            b: c.b,
+            r: c.rhs
+        })),
+        { a: 1, b: 0, r: 0 },
+        { a: 0, b: 1, r: 0 }
+    ];
+
+    let cand = [{ x: 0, y: 0 }];
+
+    for (let l of ls) {
+        if (l.a > E) {
+            cand.push({
+                x: l.r / l.a,
+                y: 0
+            });
+        }
+
+        if (l.b > E) {
+            cand.push({
+                x: 0,
+                y: l.r / l.b
+            });
+        }
+    }
+
+    for (let i = 0; i < ls.length; i++) {
+        for (let j = i + 1; j < ls.length; j++) {
+            let u = ls[i];
+            let v = ls[j];
+            let det = u.a * v.b - v.a * u.b;
+
+            if (Math.abs(det) > E) {
+                cand.push({
+                    x: (u.r * v.b - v.r * u.b) / det,
+                    y: (u.a * v.r - v.a * u.r) / det
+                });
+            }
+        }
+    }
+
+    let pts = [];
+
+    for (let p of cand) {
+        if (
+            !Number.isFinite(p.x) ||
+            !Number.isFinite(p.y) ||
+            !ok(p.x, p.y, d.cs)
+        ) {
+            continue;
+        }
+
+        let q = {
+            x: Math.abs(p.x) < 1e-7 ? 0 : p.x,
+            y: Math.abs(p.y) < 1e-7 ? 0 : p.y
+        };
+
+        if (!pts.some(t =>
+            Math.abs(t.x - q.x) < 1e-6 &&
+            Math.abs(t.y - q.y) < 1e-6
+        )) {
+            pts.push(q);
+        }
+    }
+
+    if (!pts.length) {
+        throw Error("Daerah layak tidak ditemukan. Periksa operator dan kapasitas kendala.");
+    }
+
+    // Test extreme recession directions to detect an unbounded objective.
+    let dirs = [
+        { x: 1, y: 0 },
+        { x: 0, y: 1 }
+    ];
+
+    for (let c of d.cs) {
+        let n = Math.hypot(c.a, c.b);
+
+        dirs.push(
+            { x: -c.b / n, y: c.a / n },
+            { x: c.b / n, y: -c.a / n }
+        );
+    }
+
+    let improves = dirs.some(v =>
+        v.x >= -E &&
+        v.y >= -E &&
+        d.cs.every(c =>
+            c.op === "<="
+                ? c.a * v.x + c.b * v.y <= E
+                : c.a * v.x + c.b * v.y >= -E
+        ) &&
+        (
+            d.mode === "max"
+                ? d.z1 * v.x + d.z2 * v.y > E
+                : d.z1 * v.x + d.z2 * v.y < -E
+        )
+    );
+
+    if (improves) {
+        throw Error("Nilai optimasi tidak terbatas (unbounded). Ubah atau tambahkan kendala agar solusi optimal terbatas.");
+    }
+
+    pts.forEach(p => {
+        p.z = d.z1 * p.x + d.z2 * p.y;
+    });
+
+    let val = d.mode === "max"
+        ? Math.max(...pts.map(p => p.z))
+        : Math.min(...pts.map(p => p.z));
+
+    let best = pts.filter(p =>
+        Math.abs(p.z - val) < 1e-6 * Math.max(1, Math.abs(val))
+    );
+
+    pts.sort((a, b) => a.x - b.x || a.y - b.y);
+
+    return {
+        pts,
+        best,
+        val
+    };
+}
+
+function render(d, r) {
+    let p = r.best[0];
+    let mx = d.mode === "max";
+    let word = mx ? "keuntungan maksimum" : "biaya minimum";
+    let val = r.val;
+
+    $("result").innerHTML = `
+        <h2>3. Hasil &amp; Rekomendasi</h2>
+        <p class="muted">
+            Solusi optimum dan evaluasi seluruh titik sudut daerah layak.
+        </p>
+
+        <div class="metric">
+            <span>${mx ? "Keuntungan maksimum" : "Biaya minimum"}</span>
+            <strong>${rp(val)}</strong>
+            <small>
+                Nilai fungsi tujuan Z = ${rp(d.z1)}x + ${rp(d.z2)}y
+            </small>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <span>X₁ · ${esc(d.n1)}</span>
+                <b>${f(p.x)} unit</b>
+            </div>
+
+            <div class="stat">
+                <span>X₂ · ${esc(d.n2)}</span>
+                <b>${f(p.y)} unit</b>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            Rekomendasi: produksi ${f(p.x)} ${esc(d.n1)} dan
+            ${f(p.y)} ${esc(d.n2)} per hari untuk mencapai
+            ${word} sebesar ${rp(val)}.
+        </div>
+
+        <p class="note">
+            ${
+                r.best.length > 1
+                    ? "Terdapat beberapa titik dengan nilai optimal sama; satu solusi optimum ditampilkan. "
+                    : ""
+            }
+            Model Program Linier bersifat kontinu sehingga jumlah produksi
+            dapat berupa pecahan unit.
+        </p>
+
+        <h3 style="font-size:15px;margin:20px 0 8px">
+            Tabel Evaluasi Titik Sudut
+        </h3>
+
+        <div class="tablewrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Titik sudut</th>
+                        <th>X₁</th>
+                        <th>X₂</th>
+                        <th>Z (Rp)</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    ${r.pts.map((q, i) => `
+                        <tr class="${
+                            Math.abs(q.z - val) < 1e-6 * Math.max(1, Math.abs(val))
+                                ? "best"
+                                : ""
+                        }">
+                            <td>
+                                ${String.fromCharCode(65 + i)}
+                                ${
+                                    Math.abs(q.z - val) < 1e-6 * Math.max(1, Math.abs(val))
+                                        ? " ★"
+                                        : ""
+                                }
+                            </td>
+                            <td>${f(q.x)}</td>
+                            <td>${f(q.y)}</td>
+                            <td>${rp(q.z)}</td>
+                        </tr>
+                    `).join("")}
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="font-size:15px;margin:20px 0 8px">
+            Pemakaian Sumber Daya di Titik Optimum
+        </h3>
+
+        <div class="tablewrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sumber daya</th>
+                        <th>Pemakaian</th>
+                        <th>Batas RHS</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    ${d.cs.map(c => {
+                        let used = c.a * p.x + c.b * p.y;
+                        let slack = c.op === "<="
+                            ? c.rhs - used
+                            : used - c.rhs;
+
+                        let active = Math.abs(slack) <
+                            1e-6 * Math.max(1, Math.abs(c.rhs));
+
+                        return `
+                            <tr>
+                                <td>${esc(c.name)}</td>
+                                <td>${f(used)}</td>
+                                <td>${f(c.rhs)}</td>
+                                <td>
+                                    ${
+                                        active
+                                            ? "Kendala aktif"
+                                            : (
+                                                c.op === "<="
+                                                    ? "Sisa " + f(Math.max(0, slack))
+                                                    : "Surplus " + f(Math.max(0, slack))
+                                            )
+                                    }
+                                </td>
+                            </tr>
+                        `;
+                    }).join("")}
+                </tbody>
+            </table>
+        </div>
+    `;
+
+    $("chart").innerHTML = `
+        <h2>2. Grafik Daerah Layak</h2>
+        <p class="muted">
+            Garis kendala, daerah layak, dan titik optimal.
+        </p>
+
+        <canvas id="plot" aria-label="Grafik daerah layak"></canvas>
+
+        <div class="legend">
+            ${d.cs.map((c, i) => `
+                <span>
+                    <i class="dot" style="background:${colors[i]}"></i>
+                    ${esc(c.name)}
+                </span>
+            `).join("")}
+
+            <span>
+                <i class="dot" style="background:#23845b"></i>
+                Daerah layak
+            </span>
+
+            <span>
+                <i class="dot" style="background:#d92d69"></i>
+                Titik optimal
+            </span>
+        </div>
+    `;
+
+    requestAnimationFrame(() => draw(d, r));
+}
+
+function draw(d, r) {
+    let cv = $("plot");
+    let w = Math.max(300, cv.getBoundingClientRect().width);
+    let h = 310;
+    let ratio = devicePixelRatio || 1;
+
+    cv.width = w * ratio;
+    cv.height = h * ratio;
+    cv.style.height = h + "px";
+
+    let c = cv.getContext("2d");
+    c.scale(ratio, ratio);
+
+    let mx = Math.max(1, ...r.pts.map(p => p.x)) * 1.2;
+    let my = Math.max(1, ...r.pts.map(p => p.y)) * 1.2;
+
+    for (let k of d.cs) {
+        if (k.a > E) {
+            mx = Math.max(mx, k.rhs / k.a * 1.08);
+        }
+
+        if (k.b > E) {
+            my = Math.max(my, k.rhs / k.b * 1.08);
+        }
+    }
+
+    let L = 45;
+    let T = 12;
+    let B = 38;
+
+    let pw = w - L - 12;
+    let ph = h - T - B;
+
+    let X = x => L + x / mx * pw;
+    let Y = y => T + ph - y / my * ph;
+
+    c.clearRect(0, 0, w, h);
+    c.font = "10px system-ui";
+    c.fillStyle = "#796b62";
+    c.strokeStyle = "#eee5dc";
+
+    for (let i = 0; i <= 5; i++) {
+        let x = mx * i / 5;
+        let y = my * i / 5;
+
+        c.beginPath();
+        c.moveTo(X(x), T);
+        c.lineTo(X(x), T + ph);
+        c.stroke();
+
+        c.textAlign = "center";
+        c.fillText(f(x), X(x), T + ph + 14);
+
+        c.beginPath();
+        c.moveTo(L, Y(y));
+        c.lineTo(L + pw, Y(y));
+        c.stroke();
+
+        c.textAlign = "right";
+        c.fillText(f(y), L - 6, Y(y) + 3);
+    }
+
+    c.strokeStyle = "#a99b8e";
+    c.beginPath();
+    c.moveTo(L, T);
+    c.lineTo(L, T + ph);
+    c.lineTo(L + pw, T + ph);
+    c.stroke();
+
+    // Clip first-quadrant plotting rectangle against each half-plane for feasible shading.
+    let poly = [
+        { x: 0, y: 0 },
+        { x: mx, y: 0 },
+        { x: mx, y: my },
+        { x: 0, y: my }
+    ];
+
+    for (let k of d.cs) {
+        let fun = p =>
+            k.op === "<="
+                ? k.rhs - k.a * p.x - k.b * p.y
+                : k.a * p.x + k.b * p.y - k.rhs;
+
+        let out = [];
+
+        for (let i = 0; i < poly.length; i++) {
+            let a = poly[i];
+            let b = poly[(i + 1) % poly.length];
+
+            let fa = fun(a);
+            let fb = fun(b);
+
+            let ia = fa >= -E;
+            let ib = fb >= -E;
+
+            if (ia) {
+                out.push(a);
+            }
+
+            if (ia !== ib) {
+                let t = fa / (fa - fb);
+
+                out.push({
+                    x: a.x + t * (b.x - a.x),
+                    y: a.y + t * (b.y - a.y)
+                });
+            }
+        }
+
+        poly = out;
+    }
+
+    if (poly.length >= 3) {
+        c.beginPath();
+
+        poly.forEach((p, i) => {
+            if (i) {
+                c.lineTo(X(p.x), Y(p.y));
+            } else {
+                c.moveTo(X(p.x), Y(p.y));
+            }
+        });
+
+        c.closePath();
+        c.fillStyle = "#23845b20";
+        c.fill();
+
+        c.strokeStyle = "#23845b";
+        c.stroke();
+    }
+
+    d.cs.forEach((k, i) => {
+        let pts = [];
+
+        if (k.b > E) {
+            pts.push({
+                x: 0,
+                y: k.rhs / k.b
+            });
+        }
+
+        if (k.a > E) {
+            pts.push({
+                x: k.rhs / k.a,
+                y: 0
+            });
+        }
+
+        if (k.a > E && k.b > E) {
+            let yy = (k.rhs - k.a * mx) / k.b;
+            let xx = (k.rhs - k.b * my) / k.a;
+
+            if (yy >= 0 && yy <= my) {
+                pts.push({
+                    x: mx,
+                    y: yy
+                });
+            }
+
+            if (xx >= 0 && xx <= mx) {
+                pts.push({
+                    x: xx,
+                    y: my
+                });
+            }
+        }
+
+        pts = pts.filter(p =>
+            p.x >= -E &&
+            p.y >= -E &&
+            p.x <= mx + E &&
+            p.y <= my + E
+        );
+
+        if (pts.length >= 2) {
+            c.beginPath();
+            c.moveTo(X(pts[0].x), Y(pts[0].y));
+            c.lineTo(X(pts[1].x), Y(pts[1].y));
+
+            c.strokeStyle = colors[i];
+            c.lineWidth = 2;
+            c.stroke();
+        }
+    });
+
+    r.pts.forEach(p => {
+        c.beginPath();
+        c.arc(X(p.x), Y(p.y), 3.5, 0, 7);
+        c.fillStyle = "#23845b";
+        c.fill();
+    });
+
+    r.best.forEach(p => {
+        c.beginPath();
+        c.arc(X(p.x), Y(p.y), 6, 0, 7);
+
+        c.fillStyle = "#d92d69";
+        c.fill();
+
+        c.strokeStyle = "white";
+        c.lineWidth = 2;
+        c.stroke();
+    });
+
+    c.fillStyle = "#30251f";
+    c.textAlign = "center";
+    c.fillText("Jumlah Produk 1 (x)", L + pw / 2, h - 3);
+
+    c.save();
+    c.translate(11, T + ph / 2);
+    c.rotate(-Math.PI / 2);
+    c.fillText("Jumlah Produk 2 (y)", 0, 0);
+    c.restore();
+}
+
+$("run").onclick = () => {
+    try {
+        $("error").style.display = "none";
+
+        let d = read();
+        let r = solve(d);
+
+        render(d, r);
+    } catch (e) {
+        $("error").textContent = e.message;
+        $("error").style.display = "block";
+    }
+};
+
+let tm;
+
+window.onresize = () => {
+    clearTimeout(tm);
+
+    tm = setTimeout(() => {
+        if ($("plot")) {
+            try {
+                let d = read();
+                draw(d, solve(d));
+            } catch (e) {}
+        }
+    }, 100);
+};
+
+reset();
+  </script>
+ </body>
+</html>
